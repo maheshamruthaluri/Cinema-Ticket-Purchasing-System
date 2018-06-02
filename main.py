@@ -10,6 +10,7 @@ class Ticket:
         self.film_rating = ""
 
     def check_price(self):
+        """ Set price of movie ticket based on age; student and seniority discount. """
         if 10 <= self.age < 18 and (self.student == "Y" or self.student == "y"):
             self.price = 7 * 85 / 100  # 15% discount
         elif 18 <= self.age <= 25 and (self.student == "Y" or self.student == "y"):
@@ -24,6 +25,7 @@ class Ticket:
             self.price = 10 * 93 / 100  # 7% discount
 
     def check_film(self):
+        """ Determine movie number, name and rating accordingly. """
         if self.film_num == 1:
             self.film_name = "Ant-man"
             self.film_rating = "P"
@@ -38,15 +40,18 @@ class Ticket:
             self.film_rating = "G"
 
     def check_age(self):
+        """ Determine eligibility of movie entry based on age and movie rating. """
         if self.film_rating == "M" and self.age <= 16:
             self.ticket = False
         elif self.film_rating == "P" and self.age <= 12:
             self.ticket = False
 
 class studentException(Exception):
+    """ Student verification input exception. """
     pass
 
 def main():
+    """ Main class to run program. """
     print()
     print("Welcome to the Cinema Ticket Purchasing System")
     name = input("Please enter your name: ")
